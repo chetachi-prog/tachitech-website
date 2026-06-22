@@ -261,10 +261,6 @@ function Hero() {
       <AnimatedBackground />
       <div className="container-padding max-w-7xl mx-auto relative z-10 pt-24">
         <div className="max-w-5xl">
-          {/* Cleaned pill badge matching your new layout style */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-sm font-medium mb-8 animate-fade-in-down">
-            <Sparkles className="w-4 h-4" /><span>Product Development & Growth</span>
-          </div>
           
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
             <span className="block animate-fade-in-up">Build.</span>
@@ -272,10 +268,16 @@ function Hero() {
             <span className="block animate-fade-in-up animation-delay-200">Scale.</span>
           </h1>
           
-          {/* Combined copy: Integrates your taglines natively and removes the "From MVP..." text entirely */}
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-12 animate-fade-in-up animation-delay-300">
-            We help ambitious businesses transform ideas into successful digital products through <span className="text-white font-medium">Product Strategy</span>, world-class <span className="text-white font-medium">Engineering</span>, and data-driven <span className="text-white font-medium">Growth Marketing</span>. We align your product roadmap with real business outcomes and stand alongside you as your dedicated execution partner.
+          {/* Cleaned uniform description paragraph */}
+          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-8 animate-fade-in-up animation-delay-300">
+            We help ambitious businesses transform ideas into successful digital products through world-class software development, product strategy, and growth marketing.
           </p>
+
+          {/* Pill badge positioned right below the description text */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-sm font-medium mb-10 animate-fade-in-up animation-delay-400">
+            <Sparkles className="w-4 h-4" />
+            <span>Product Strategy - Engineering - Growth Marketing</span>
+          </div>
 
           <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-500">
             <a href="#cta" className="btn-primary"><Rocket className="w-5 h-5" />Start Your Project</a>
