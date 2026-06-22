@@ -168,85 +168,92 @@ function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4 glass-dark shadow-2xl' : 'py-6 bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? 'py-4 glass-dark shadow-2xl bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900' : 'py-6 bg-transparent'
+      }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-600 to-cyan-600 rounded-2xl -rotate-3 group-hover:-rotate-6 transition-transform" />
-              <span className="relative text-white font-bold text-2xl">T</span>
-            </div>
-            <span className="text-white font-semibold text-2xl tracking-tight">Tachi<span className="text-sky-400">Tech</span></span>
-          </a>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
-            {NAV_LINKS.map((link) => (
-              <a 
-                key={link.label} 
-                href={link.href} 
-                className="text-slate-300 hover:text-white transition-colors text-[15px] font-medium relative group"
-              >
-                {link.label}
-                <span className="absolute -bottom-1.5 left-0 w-0 h-[2px] bg-gradient-to-r from-sky-400 to-cyan-400 group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
-            
-            <a 
-              href="#cta" 
-              className="btn-primary text-sm px-7 py-3"
-            >
-              <Sparkles className="w-4 h-4" /> Start Project
+          
+          {/* 1. Left Aligned Logo Container */}
+          <div className="flex-1 flex justify-start">
+            <a href="#" className="flex items-center gap-3 group">
+              <div className="relative w-10 h-10 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-0 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center font-mono font-bold text-sm tracking-wider">
+                  TT
+                </div>
+              </div>
+              <span className="font-mono font-bold text-sm tracking-wider uppercase text-zinc-100 group-hover:text-white transition-colors">
+                TACHI TECH <span className="text-zinc-500 font-normal">LTD</span>
+              </span>
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="lg:hidden text-white p-2" 
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu className="w-7 h-7" />
-          </button>
+          {/* 2. Centered Navigation Menu (Desktop Only) */}
+          <div className="hidden md:flex items-center justify-center bg-zinc-900/40 border border-zinc-800/50 rounded-full px-6 py-2 backdrop-blur-sm gap-8">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-xs font-medium text-zinc-400 hover:text-zinc-100 transition-colors uppercase tracking-wider relative group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-sky-400 to-cyan-400 transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </div>
+
+          {/* 3. Right Aligned CTA Container (Desktop) / Mobile Toggle Button */}
+          <div className="flex-1 flex justify-end items-center">
+            {/* Desktop Action Button */}
+            <div className="hidden md:block">
+              <button className="relative inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-zinc-950 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
+                Start Your Build
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Mobile Menu Icon */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 focus:outline-none cursor-pointer"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="absolute right-0 top-0 bottom-0 w-80 glass-dark flex flex-col">
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <span className="text-white font-semibold text-xl">Menu</span>
-              <button onClick={() => setIsMobileMenuOpen(false)} className="text-white p-2">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="flex flex-col p-6 gap-6 text-lg">
-              {NAV_LINKS.map((link) => (
-                <a 
-                  key={link.label} 
-                  href={link.href} 
-                  onClick={() => setIsMobileMenuOpen(false)} 
-                  className="text-slate-300 hover:text-white transition-colors py-2"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a 
-                href="#cta" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className="btn-primary text-center mt-6 py-4"
-              >
-                Start Your Project
-              </a>
-            </div>
-          </div>
+      {/* 4. Fullscreen Mobile Navigation Menu Overlay */}
+      <div className={`fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-lg transform transition-transform duration-500 md:hidden flex flex-col justify-center ${
+        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="flex flex-col items-center gap-8 px-6 text-center">
+          {NAV_LINKS.map((link, idx) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-2xl font-semibold text-zinc-300 hover:text-white transition-colors tracking-wide flex items-center gap-2"
+              style={{ transitionDelay: `${idx * 50}ms` }}
+            >
+              {link.label}
+              <ChevronRight className="w-5 h-5 text-sky-400 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+            </a>
+          ))}
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="mt-8 w-full max-w-xs flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-zinc-950 text-sm font-bold uppercase tracking-wider py-4 rounded-xl"
+          >
+            Start Your Build
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
-      )}
+      </div>
     </>
   );
 }
+
 
 function Hero() {
   return (
