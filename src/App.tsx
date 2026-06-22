@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   ArrowRight,
   Lightbulb,
@@ -160,49 +160,86 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useState(() => {
+  useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  });
+  }, []);
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'py-4 glass-dark shadow-2xl' : 'py-6 bg-transparent'}`}>
-        <div className="container-padding max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">
+          {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <div className="relative w-10 h-10 flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-xl rotate-6 group-hover:rotate-12 transition-transform" />
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-600 to-cyan-600 rounded-xl -rotate-3 group-hover:-rotate-6 transition-transform" />
-              <span className="relative text-white font-bold text-lg">T</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-br from-sky-600 to-cyan-600 rounded-2xl -rotate-3 group-hover:-rotate-6 transition-transform" />
+              <span className="relative text-white font-bold text-2xl">T</span>
             </div>
-            <span className="text-white font-semibold text-xl">Tachi<span className="text-sky-400">Tech</span></span>
+            <span className="text-white font-semibold text-2xl tracking-tight">Tachi<span className="text-sky-400">Tech</span></span>
           </a>
-          <div className="hidden lg:flex items-center gap-8">
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-10">
             {NAV_LINKS.map((link) => (
-              <a key={link.label} href={link.href} className="text-slate-300 hover:text-white transition-colors text-sm font-medium relative group">
+              <a 
+                key={link.label} 
+                href={link.href} 
+                className="text-slate-300 hover:text-white transition-colors text-[15px] font-medium relative group"
+              >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-sky-500 to-cyan-500 group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1.5 left-0 w-0 h-[2px] bg-gradient-to-r from-sky-400 to-cyan-400 group-hover:w-full transition-all duration-300" />
               </a>
             ))}
-            <a href="#cta" className="btn-primary text-sm"><Sparkles className="w-4 h-4" />Start Your Project</a>
+            
+            <a 
+              href="#cta" 
+              className="btn-primary text-sm px-7 py-3"
+            >
+              <Sparkles className="w-4 h-4" /> Start Project
+            </a>
           </div>
-          <button className="lg:hidden text-white p-2" onClick={() => setIsMobileMenuOpen(true)}><Menu className="w-6 h-6" /></button>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden text-white p-2" 
+            onClick={() => setIsMobileMenuOpen(true)}
+          >
+            <Menu className="w-7 h-7" />
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
           <div className="absolute right-0 top-0 bottom-0 w-80 glass-dark flex flex-col">
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <span className="text-white font-semibold text-xl">Menu</span>
-              <button onClick={() => setIsMobileMenuOpen(false)} className="text-white p-2"><X className="w-5 h-5" /></button>
+              <button onClick={() => setIsMobileMenuOpen(false)} className="text-white p-2">
+                <X className="w-6 h-6" />
+              </button>
             </div>
-            <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col p-6 gap-6 text-lg">
               {NAV_LINKS.map((link) => (
-                <a key={link.label} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="text-slate-300 hover:text-white transition-colors text-lg py-2">{link.label}</a>
+                <a 
+                  key={link.label} 
+                  href={link.href} 
+                  onClick={() => setIsMobileMenuOpen(false)} 
+                  className="text-slate-300 hover:text-white transition-colors py-2"
+                >
+                  {link.label}
+                </a>
               ))}
-              <a href="#cta" className="btn-primary text-center mt-4" onClick={() => setIsMobileMenuOpen(false)}>Start Your Project</a>
+              <a 
+                href="#cta" 
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className="btn-primary text-center mt-6 py-4"
+              >
+                Start Your Project
+              </a>
             </div>
           </div>
         </div>
@@ -258,6 +295,7 @@ function Trusted() {
 
 function Services() {
   const [activeService, setActiveService] = useState(0);
+
   return (
     <section id="services" className="relative gradient-bg section-padding overflow-hidden">
       <AnimatedBackground />
@@ -267,10 +305,15 @@ function Services() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Our Services</h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">Comprehensive solutions to build, launch, and scale your digital products</p>
         </div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-4">
             {SERVICES.map((service, index) => (
-              <button key={service.title} onClick={() => setActiveService(index)} className={`w-full text-left p-6 rounded-2xl transition-all duration-500 ${activeService === index ? 'glass-dark border-sky-500/50 shadow-2xl shadow-sky-500/10' : 'bg-white/5 border border-transparent hover:bg-white/10'}`}>
+              <button 
+                key={service.title} 
+                onClick={() => setActiveService(index)} 
+                className={`w-full text-left p-6 rounded-2xl transition-all duration-500 ${activeService === index ? 'glass-dark border-sky-500/50 shadow-2xl shadow-sky-500/10' : 'bg-white/5 border border-transparent hover:bg-white/10'}`}
+              >
                 <div className="flex items-start gap-4">
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center flex-shrink-0 shadow-lg`}>
                     <service.icon className="w-7 h-7 text-white" />
@@ -284,6 +327,7 @@ function Services() {
               </button>
             ))}
           </div>
+
           <div className="glass-dark rounded-3xl p-8 lg:p-10 shadow-2xl">
             <div className="flex items-center gap-4 mb-8">
               <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${SERVICES[activeService].color} flex items-center justify-center shadow-lg`}>
@@ -292,7 +336,7 @@ function Services() {
               <h3 className="text-2xl font-bold text-white">{SERVICES[activeService].title}</h3>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
-              {SERVICES[activeService].items.map((item, index) => (
+              {SERVICES[activeService].items.map((item) => (
                 <div key={item.label} className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
                   <item.icon className="w-5 h-5 text-sky-400 flex-shrink-0" />
                   <span className="text-slate-300 text-sm">{item.label}</span>

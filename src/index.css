@@ -12,7 +12,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-h1, h2, h3, h4, .display-font {
+h1, h2, h3, h4 {
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -21,36 +21,76 @@ h1, h2, h3, h4, .display-font {
   background: radial-gradient(circle at top center, #0f172a 0%, #020617 70%);
 }
 
-/* Better Glass Effect */
+/* Glass Effect */
 .glass-dark {
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(90deg, #67e8f9, #22d3ee, #67e8f9);
+  background: linear-gradient(90deg, #67e8f9, #22d3ee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 200% 200%;
-  animation: gradient 6s ease infinite;
 }
 
-/* Button Styles */
+/* Buttons */
 .btn-primary {
-  @apply bg-gradient-to-r from-sky-500 to-cyan-400 hover:from-sky-400 hover:to-cyan-300 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 flex items-center gap-3 shadow-lg shadow-sky-500/30 hover:shadow-xl hover:-translate-y-0.5;
+  background: linear-gradient(to right, #0ea5e9, #22d3ee);
+  color: white;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 25px -5px rgb(14 165 235 / 0.4);
 }
 
 .btn-secondary {
-  @apply border border-white/30 hover:border-white/50 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 flex items-center gap-3 hover:bg-white/5;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Improved Spacing */
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* Spacing */
 .section-padding {
-  @apply py-20 lg:py-28 xl:py-32;   /* More generous vertical space */
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
 }
 
 .container-padding {
-  @apply px-6 md:px-10 lg:px-16 xl:px-20;   /* Better horizontal breathing room */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-padding {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }
