@@ -43,65 +43,58 @@ const NAV_LINKS = [
 
 const SERVICES = [
   {
-    title: 'Product Strategy & Management',
-    description: 'Turn ideas into products people actually want. We help define product vision, validate opportunities, and create roadmaps that align with business goals.',
-    icon: Lightbulb,
-    color: 'from-amber-500 to-orange-500',
+    id: 'design',
+    phase: 'Phase 01',
+    action: 'Shape',
+    title: 'UI/UX & Product Strategy',
+    tagline: 'Design experiences users love and business metrics benefit from.',
+    description: 'We don’t just paint pixels. We run deep user research, outline architectural wireframes, and craft comprehensive design systems built to maximize early customer onboarding.',
+    color: 'from-pink-500 to-rose-500',
+    icon: Palette,
+    capabilities: ['Product Discovery', 'UX/UI Design Systems', 'Interactive Prototyping', 'User Flow Optimization'],
     items: [
       { icon: Target, label: 'Product Discovery' },
-      { icon: Layers, label: 'Product Roadmapping' },
-      { icon: Search, label: 'Market Research' },
-      { icon: Users, label: 'User Research' },
-      { icon: Layers, label: 'Feature Prioritization' },
-      { icon: BarChart3, label: 'Product Analytics' },
-    ],
-  },
-  {
-    title: 'Software Development',
-    description: 'Build secure, scalable, and high-performing digital products designed for growth.',
-    icon: Code2,
-    color: 'from-sky-500 to-cyan-500',
-    items: [
-      { icon: Globe, label: 'Web Applications' },
-      { icon: Smartphone, label: 'Mobile Applications' },
-      { icon: Cloud, label: 'SaaS Platforms' },
-      { icon: Database, label: 'Enterprise Software' },
-      { icon: GitBranch, label: 'API Development' },
-      { icon: Cloud, label: 'Cloud Infrastructure' },
-      { icon: ShieldCheck, label: 'Quality Assurance' },
-    ],
-  },
-  {
-    title: 'UI/UX Design',
-    description: 'Create experiences users enjoy and businesses benefit from.',
-    icon: Palette,
-    color: 'from-pink-500 to-rose-500',
-    items: [
-      { icon: PenTool, label: 'Product Design' },
+      { icon: Layers, label: 'Design Systems' },
       { icon: Search, label: 'UX Research' },
       { icon: Layout, label: 'Wireframing' },
-      { icon: Layers, label: 'Prototyping' },
-      { icon: Layers, label: 'Design Systems' },
-      { icon: MousePointer, label: 'Conversion Optimization' },
     ],
   },
   {
-    title: 'Growth & Scale',
-    description: 'The difference between a product that exists and a product that succeeds.',
-    icon: TrendingUp,
-    color: 'from-emerald-500 to-teal-500',
+    id: 'development',
+    phase: 'Phase 02',
+    action: 'Ship',
+    title: 'Engineered Software Systems',
+    tagline: 'Build secure, clean, and highly scalable digital foundations.',
+    description: 'We compile type-safe, production-ready applications utilizing React, TypeScript, and optimized cloud infrastructure. Engineered for speed, security, and smooth zero-downtime scalability.',
+    color: 'from-sky-500 to-cyan-500',
+    icon: Code2,
+    capabilities: ['Web & Mobile Applications', 'SaaS Architecture', 'Custom API & DB Systems', 'Cloud Infrastructure (AWS)'],
     items: [
-      { icon: TrendingUp, label: 'Growth Strategy' },
-      { icon: Megaphone, label: 'Performance Marketing' },
-      { icon: Rocket, label: 'Product-Led Growth' },
-      { icon: UserCheck, label: 'Customer Acquisition' },
-      { icon: MousePointer, label: 'Conversion Optimization' },
-      { icon: HeartHandshake, label: 'Retention Strategy' },
-      { icon: Mail, label: 'Marketing Automation' },
-      { icon: LineChart, label: 'Growth Analytics' },
+      { icon: Globe, label: 'Web Applications' },
+      { icon: Smartphone, label: 'Mobile Apps' },
+      { icon: Cloud, label: 'Cloud Infrastructure' },
+      { icon: Database, label: 'API Development' },
     ],
   },
+  {
+    id: 'growth',
+    phase: 'Phase 03',
+    action: 'Scale',
+    title: 'Growth Marketing & Analytics',
+    tagline: 'The difference between a product that exists and one that thrives.',
+    description: 'A great product needs clear eyes. We wire up advanced performance analytics, construct behavioral growth funnels, and optimize retention strategies to lower user acquisition costs.',
+    color: 'from-emerald-500 to-teal-500',
+    icon: TrendingUp,
+    capabilities: ['Growth Funnel Analytics', 'Conversion Optimization', 'Performance Retainers', 'Retention Automation'],
+    items: [
+      { icon: LineChart, label: 'Growth Analytics' },
+      { icon: Megaphone, label: 'Performance Marketing' },
+      { icon: UserCheck, label: 'Customer Acquisition' },
+      { icon: HeartHandshake, label: 'Retention Strategy' },
+    ],
+  }
 ];
+
 
 const WHY_US = [
   { title: "We Don't Stop At Launch", description: 'We become your growth partner, helping you continuously improve, market, and scale your product.', icon: Rocket },
@@ -173,7 +166,7 @@ function Navbar() {
       }`}>
         <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">
           
-          {/* 1. Left Aligned Logo Container */}
+          {/* Logo */}
           <div className="flex-1 flex justify-start">
             <a href="#" className="flex items-center gap-3 group">
               <div className="relative w-10 h-10 flex items-center justify-center">
@@ -188,7 +181,7 @@ function Navbar() {
             </a>
           </div>
 
-          {/* 2. Centered Navigation Menu (Desktop Only) */}
+          {/* Centered Navigation Menu */}
           <div className="hidden md:flex items-center justify-center bg-zinc-900/40 border border-zinc-800/50 rounded-full px-6 py-2 backdrop-blur-sm gap-8">
             {NAV_LINKS.map((link) => (
               <a
@@ -202,9 +195,8 @@ function Navbar() {
             ))}
           </div>
 
-          {/* 3. Right Aligned CTA Container (Desktop) / Mobile Toggle Button */}
+          {/* CTA / Mobile Toggle */}
           <div className="flex-1 flex justify-end items-center">
-            {/* Desktop Action Button */}
             <div className="hidden md:block">
               <button className="relative inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-zinc-950 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
                 Start Your Build
@@ -212,7 +204,6 @@ function Navbar() {
               </button>
             </div>
 
-            {/* Mobile Menu Icon */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 focus:outline-none cursor-pointer"
@@ -224,7 +215,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* 4. Fullscreen Mobile Navigation Menu Overlay */}
+      {/* Mobile Drawer Menu */}
       <div className={`fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-lg transform transition-transform duration-500 md:hidden flex flex-col justify-center ${
         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
@@ -234,7 +225,7 @@ function Navbar() {
               key={link.label}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-semibold text-zinc-300 hover:text-white transition-colors tracking-wide flex items-center gap-2"
+              className="text-2xl font-semibold text-zinc-300 hover:text-white transition-colors tracking-wide flex items-center gap-2 group"
               style={{ transitionDelay: `${idx * 50}ms` }}
             >
               {link.label}
@@ -253,7 +244,6 @@ function Navbar() {
     </>
   );
 }
-
 
 function Hero() {
   return (
