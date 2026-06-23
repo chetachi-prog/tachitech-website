@@ -543,22 +543,121 @@ function About() {
   );
 }
 
+import { useForm } from '@formspree/react';
+
 function CTA() {
+  const [state, handleSubmit] = useForm("mlgydyna");   // ← Your Formspree ID
+
   return (
     <section id="cta" className="relative gradient-bg section-padding overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-sky-500/20 to-cyan-500/20 rounded-full blur-3xl" />
-      </div>
-      <div className="container-padding max-w-7xl mx-auto relative z-10">
-        <div className="glass-dark rounded-[3rem] p-12 lg:p-20 text-center max-w-5xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-8"><Sparkles className="w-4 h-4" /><span>Let's Build Together</span></div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">Ready to Build and Scale <span className="gradient-text">Your Next Product?</span></h2>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">Whether you're launching a startup, modernizing operations, or scaling an existing platform, Tachi Tech is ready to help.</p>
-          <p className="text-lg text-sky-400 font-medium mb-10">Let's build something remarkable - and grow it together.</p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <a href="mailto:hello@tachitech.com" className="btn-primary text-lg"><MessageSquare className="w-5 h-5" />Book a Discovery Call</a>
-            <a href="mailto:projects@tachitech.com" className="btn-secondary text-lg"><Rocket className="w-5 h-5" />Start Your Project</a>
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="glass-dark rounded-3xl p-10 lg:p-20">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-sky-500/10 text-sky-400 text-sm font-medium mb-6">
+              <Sparkles className="w-4 h-4" /> Let's Build Something Amazing
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+              Let's bring your idea to life!
+            </h2>
+            <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+              Fill out the form below and our team will get back to you within 24 hours.
+            </p>
           </div>
+
+          {state.succeeded ? (
+            <div className="text-center py-20">
+              <div className="text-6xl mb-6">🎉</div>
+              <h3 className="text-3xl font-semibold text-green-400 mb-4">Thank You!</h3>
+              <p className="text-slate-300 text-lg">Your message has been received. We'll contact you soon.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8 max-w-2xl mx-auto">
+              
+              {/* Name Fields */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm text-slate-400 mb-2">First Name *</label>
+                  <input 
+                    type="text" 
+                    name="firstName" 
+                    required 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
+                    placeholder="John"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-slate-400 mb-2">Last Name *</label>
+                  <input 
+                    type="text" 
+                    name="lastName" 
+                    required 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
+                    placeholder="Doe"
+                  />
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm text-slate-400 mb-2">Business Email *</label>
+                  <input 
+                    type="email" 
+                    name="email" 
+                    required 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
+                    placeholder="you@company.com"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm text-slate-400 mb-2">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    name="phone" 
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder:text-slate-400 focus:border-sky-500 focus:outline-none"
+                    placeholder="+234 000 000 0000"
+                  />
+                </div>
+              </div>
+
+              {/* Service Selection */}
+              <div>
+                <label className="block text-sm text-slate-400 mb-2">What are you looking to build with TachiTech? *</label>
+                <select 
+                  name="service" 
+                  required 
+                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-sky-500 focus:outline-none"
+                >
+                  <option value="" disabled>Select a service</option>
+                  {SERVICES.map((service) => (
+                    <option key={service.title} value={service.title}>
+                      {service.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label className="block text-sm text-slate-400 mb-2">Tell us more about your project *</label>
+                <textarea 
+                  name="message" 
+                  required 
+                  rows={6}
+                  className="w-full bg-white/5 border border-white/10 rounded-3xl px-6 py-4 text-white placeholder:text-slate-400 focus:border-sky-500 focus:outline-none resize-y"
+                  placeholder="Describe your idea, goals, timeline, budget range, and any specific requirements..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={state.submitting}
+                className="btn-primary w-full py-5 text-lg font-semibold disabled:opacity-70 mt-4"
+              >
+                {state.submitting ? "Sending your request..." : "Submit Your Project Request"}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>
