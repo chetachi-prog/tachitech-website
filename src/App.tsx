@@ -699,6 +699,164 @@ function Footer() {
     </footer>
   );
 }
+// 1. The data fetching engine sits outside the component
+async function fetchBlogPosts() {
+  const HYGRAPH_ENDPOINT = "https://hygraph.com";
+  
+  const query = `
+    query GetBlogPosts {
+      posts {
+        id
+        title
+        slug
+        excerpt
+        category
+        date
+        readTime
+        content
+      }
+    }
+  `;
+
+  try {
+    const response = await fetch(HYGRAPH_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query }),
+    });
+    const json = await response.json();
+    return json.data.posts;
+  } catch (error) {
+    console.error("Error loading blog entries:", error);
+    return [];
+  }
+}
+
+// 2. Your UI component layer sits directly underneath it
+function Blog() {
+  interface Post {
+    id: string;
+    title: string;
+    slug: string;
+    excerpt: string;
+    category: string;
+    date: string;
+    readTime: string;
+    content: string;
+  }
+
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activePost, setActivePost] = useState<Post | null>(null);
+
+  useEffect(() => {
+    fetchBlogPosts().then((data) => {
+      setPosts(data || []);
+      setLoading(false);
+    });
+  }, []);
+
+  return (
+    <section id="blog" className="py-28 relative overflow-hidden border-t border-slate-900/50 bg-zinc-950 text-left">
+      <div className="container-padding max-w-7xl mx-auto relative z-10">
+        
+        {/* Header Block */}
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-dark text-sky-400 text-xs font-medium mb-4">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Insights & Thinking</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
+            Latest from Tachi Tech.
+          </h2>
+          <p className="text-lg text-slate-400">
+            Our thoughts on engineering high-performance software, refining product strategies, and scaling modern digital businesses.
+          </p>
+        </div>
+
+        {/* Loading / Data Grid States */}
+        {loading ? (
+          <div className="text-slate-500 font-mono text-xs animate-pulse">Loading secure content database stream...</div>
+        ) : posts.length === 0 ? (
+          <div className="text-slate-500 font-mono text-xs">No entries published yet. Stay tuned.</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {posts.map((post) => (
+              <article 
+                key={post.id} 
+                onClick={() => setActivePost(post)}
+                className="group relative flex flex-col justify-between p-6 rounded-2xl glass-dark border border-slate-800/40 hover:border-sky-500/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 text-xs font-medium text-slate-400 mb-4">
+                    <span className="text-sky-400 px-2.5 py-0.5 rounded-full bg-sky-500/10 border border-sky-500/20">
+                      {post.category}
+                    </span>
+                    <div className="flex items-center gap-2 text-slate-500 font-mono">
+                      <span>{post.date}</span>
+                      <span>•</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sky-400 transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-900 flex items-center text-xs font-semibold uppercase tracking-wider text-white group-hover:text-sky-400 transition-colors gap-1">
+                  Read Article
+                  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Slide-Over Article Drawer Overlay */}
+      <div className={`fixed inset-0 z-50 transition-all duration-500 flex justify-end ${activePost ? 'visible pointer-events-auto' : 'invisible pointer-events-none'}`}>
+        <div 
+          className={`absolute inset-0 bg-zinc-950/60 backdrop-blur-sm transition-opacity duration-500 ${activePost ? 'opacity-100' : 'opacity-0'}`}
+          onClick={() => setActivePost(null)}
+        />
+        
+        <div className={`relative w-full max-w-2xl h-full bg-zinc-900 border-l border-slate-800/80 p-8 md:p-12 overflow-y-auto shadow-2xl transform transition-transform duration-500 ease-out flex flex-col text-left ${activePost ? 'translate-x-0' : 'translate-x-full'}`}>
+          {activePost && (
+            <>
+              <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-800/60">
+                <span className="text-xs font-mono text-sky-400 font-semibold tracking-widest uppercase">{activePost.category}</span>
+                <button 
+                  onClick={() => setActivePost(null)} 
+                  className="p-2 rounded-full border border-slate-800 hover:border-slate-700 bg-zinc-950 text-slate-400 hover:text-white transition-all cursor-pointer"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              <div className="text-xs font-mono text-slate-500 mb-2 flex gap-4">
+                <span>Published: {activePost.date}</span>
+                <span>•</span>
+                <span>{activePost.readTime}</span>
+              </div>
+              <h1 className="text-2xl md:text-4xl font-bold text-white tracking-tight leading-tight mb-6">
+                {activePost.title}
+              </h1>
+
+              <div className="text-slate-300 text-sm md:text-base leading-relaxed space-y-6 whitespace-pre-wrap font-sans">
+                {activePost.content}
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 export default function App() {
   return (
@@ -711,6 +869,10 @@ export default function App() {
         <WhyUs />
         <Process />
         <Industries />
+        
+        {/* The Blog component is safely added here, with zero changes to your Navbar */}
+        <Blog /> 
+        
         <About />
         <CTA />
       </main>
@@ -718,3 +880,4 @@ export default function App() {
     </div>
   );
 }
+
