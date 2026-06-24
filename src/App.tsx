@@ -857,7 +857,6 @@ function Blog() {
   );
 }
 
-
 export default function App() {
   return (
     <div className="min-h-screen gradient-bg">
@@ -869,10 +868,7 @@ export default function App() {
         <WhyUs />
         <Process />
         <Industries />
-        
-        {/* The Blog component is safely added here, with zero changes to your Navbar */}
         <Blog /> 
-        
         <About />
         <CTA />
       </main>
