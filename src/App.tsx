@@ -154,89 +154,95 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'py-4 glass-dark shadow-2xl bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900' : 'py-6 bg-transparent'
+      {/* 🚀 Floating Capsule Wrapper with responsive positioning constraints */}
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8 lg:px-12 ${
+        isScrolled ? 'pt-2 md:pt-4' : 'pt-4 md:pt-6'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">
+        <nav className={`max-w-7xl mx-auto px-6 h-14 md:h-16 flex items-center justify-between rounded-full border transition-all duration-500 ${
+          isScrolled 
+            ? 'bg-zinc-950/70 backdrop-blur-xl border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]' 
+            : 'bg-zinc-900/30 backdrop-blur-md border-white/5'
+        }`}>
           
-          {/* Logo */}
+          {/* Left Aligned Brand Identity */}
           <div className="flex-1 flex justify-start">
             <a href="#" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform" />
-                <div className="absolute inset-0 bg-zinc-900 border border-zinc-800 rounded-2xl flex items-center justify-center font-mono font-bold text-sm tracking-wider">
+              <div className="relative w-8 h-8 md:w-9 md:h-9 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-cyan-500 rounded-full opacity-80 group-hover:rotate-180 transition-transform duration-700" />
+                <div className="absolute inset-[1px] bg-zinc-950 rounded-full flex items-center justify-center font-mono font-bold text-xs tracking-wider text-white">
                   TT
                 </div>
               </div>
-              <span className="font-mono font-bold text-sm tracking-wider uppercase text-zinc-100 group-hover:text-white transition-colors">
-                TACHI TECH <span className="text-zinc-500 font-normal">LTD</span>
+              <span className="font-mono font-bold text-xs md:text-sm tracking-widest uppercase text-zinc-200 group-hover:text-white transition-colors">
+                TACHI TECH <span className="text-zinc-600 font-normal">LTD</span>
               </span>
             </a>
           </div>
 
-          {/* Centered Navigation Menu */}
-          <div className="hidden md:flex items-center justify-center bg-zinc-900/40 border border-zinc-800/50 rounded-full px-6 py-2 backdrop-blur-sm gap-8">
+          {/* Centered Navigation Matrix Links (Desktop & Tablet Optimized) */}
+          <div className="hidden sm:flex items-center justify-center gap-6 lg:gap-8 px-6 py-1.5">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-xs font-medium text-zinc-400 hover:text-zinc-100 transition-colors uppercase tracking-wider relative group"
+                className="text-[11px] lg:text-xs font-semibold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-gradient-to-r from-sky-400 to-cyan-400 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-sky-400 transition-all duration-300 group-hover:w-4" />
               </a>
             ))}
           </div>
 
-          {/* CTA / Mobile Toggle */}
-          <div className="flex-1 flex justify-end items-center">
-            <div className="hidden md:block">
-              <button className="relative inline-flex items-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-zinc-950 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(14,165,233,0.3)] transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
-                Start Your Build
+          {/* Right Aligned Premium Action CTA Menu Toggle */}
+          <div className="flex-1 flex justify-end items-center gap-4">
+            <div className="hidden sm:block">
+              <button className="relative inline-flex items-center gap-1.5 bg-white text-zinc-950 text-[10px] md:text-xs font-bold uppercase tracking-widest px-4 md:px-5 py-2 md:py-2.5 rounded-full hover:bg-zinc-100 transition-all shadow-md transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
+                Start Build
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
+            {/* Accessible Hamburger Interactive Menu Button Trigger */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 focus:outline-none cursor-pointer"
+              className="sm:hidden p-2 text-zinc-400 hover:text-white focus:outline-none cursor-pointer"
+              aria-label="Toggle navigation menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
-        </div>
-      </nav>
+        </nav>
+      </div>
 
-      {/* Mobile Drawer Menu */}
-      <div className={`fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-lg transform transition-transform duration-500 md:hidden flex flex-col justify-center ${
+      {/* Fullscreen Mobile Drawer Sheet Overlay */}
+      <div className={`fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-xl transform transition-transform duration-500 sm:hidden flex flex-col justify-center ${
         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
-        <div className="flex flex-col items-center gap-8 px-6 text-center">
+        <div className="flex flex-col items-center gap-6 px-6 text-center">
           {NAV_LINKS.map((link, idx) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-semibold text-zinc-300 hover:text-white transition-colors tracking-wide flex items-center gap-2 group"
-              style={{ transitionDelay: `${idx * 50}ms` }}
+              className="text-xl font-bold uppercase tracking-widest text-zinc-400 hover:text-white transition-colors"
+              style={{ transitionDelay: `${idx * 40}ms` }}
             >
               {link.label}
-              <ChevronRight className="w-5 h-5 text-sky-400 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
             </a>
           ))}
           <button 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-8 w-full max-w-xs flex items-center justify-center gap-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-zinc-950 text-sm font-bold uppercase tracking-wider py-4 rounded-xl"
+            className="mt-6 w-full max-w-xs flex items-center justify-center gap-2 bg-white text-zinc-950 text-xs font-bold uppercase tracking-widest py-3.5 rounded-full"
           >
-            Start Your Build
+            Start Build
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
