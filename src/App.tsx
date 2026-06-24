@@ -699,9 +699,8 @@ function Footer() {
     </footer>
   );
 }
-// 1. The data fetching engine sits outside the component
 async function fetchBlogPosts() {
-  const HYGRAPH_ENDPOINT = "https://hygraph.com";
+  const HYGRAPH_ENDPOINT = "https://eu-west-2.cdn.hygraph.com/content/cmqi3j7to03cz08usfhr557ly/master";
   
   const query = `
     query GetBlogPosts {
@@ -732,7 +731,6 @@ async function fetchBlogPosts() {
   }
 }
 
-// 2. Your UI component layer sits directly underneath it
 function Blog() {
   interface Post {
     id: string;
