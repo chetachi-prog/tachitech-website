@@ -252,93 +252,87 @@ function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden py-20 text-center">
       <AnimatedBackground />
-      
-      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full">
-        {/* Main Central Typography Core */}
-        <div className="relative max-w-4xl mx-auto z-20">
-          
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-sm font-medium mb-8 mx-auto">
-            <Sparkles className="w-4 h-4" />
-            <span>Product Strategy • Engineering • Growth Marketing</span>
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
-            <span className="block">Build.</span>
-            <span className="block gradient-text">Launch.</span>
-            <span className="block">Scale.</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-12 mx-auto">
-            We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
-          </p>
 
-          {/* Centralized CTA button */}
-          <div className="flex justify-center">
-            <a 
-              href="#cta" 
-              className="inline-flex items-center gap-2 bg-transparent border border-slate-700 hover:border-slate-500 text-white text-sm font-semibold uppercase tracking-wider px-8 py-3.5 rounded-xl transition-all"
-            >
-              <MessageSquare className="w-4 h-4 text-sky-400" />
-              Book a Discovery Call
-            </a>
+      {/* Floating Cards — outside the content container, relative to full section */}
+      <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none select-none z-10">
+
+        {/* Card 1: UI/UX Design — Left */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-6 xl:left-16 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-64 animate-float">
+          <div className="flex items-center gap-3 mb-3 text-left">
+            <div className="w-9 h-9 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400">
+              <Palette className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="text-xs text-slate-500 font-mono">WORKSPACE</div>
+              <div className="text-sm font-bold text-white tracking-wide">UI/UX Design</div>
+            </div>
+          </div>
+          <div className="space-y-2 mt-4 text-left">
+            <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+              <div className="h-full w-[85%] bg-gradient-to-r from-pink-500 to-rose-500 rounded-full" />
+            </div>
+            <div className="flex justify-between text-[10px] font-mono text-slate-400">
+              <span>Design System</span>
+              <span>85% Optimized</span>
+            </div>
           </div>
         </div>
 
-        {/* 📐 FLOATING ENVIRONMENT CARDS (Strictly limited to 2 items) */}
-        <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none select-none">
-          
-          {/* Card 1: UI/UX Design Card (Flanks Left Center) */}
-          <div className="absolute top-1/4 left-4 xl:left-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-64">
-            <div className="flex items-center gap-3 mb-3 text-left">
-              <div className="w-9 h-9 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400">
-                <Palette className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 font-mono">WORKSPACE</div>
-                <div className="text-sm font-bold text-white tracking-wide">UI/UX Design</div>
-              </div>
+        {/* Card 2: Product Engineer — Right */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-6 xl:right-16 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-72 animate-float animation-delay-300">
+          <div className="flex items-center gap-3 mb-4 text-left">
+            <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+              <Code2 className="w-5 h-5" />
             </div>
-            <div className="space-y-2 mt-4 text-left">
-              <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full w-[85%] bg-gradient-to-r from-pink-500 to-rose-500 rounded-full" />
-              </div>
-              <div className="flex justify-between text-[10px] font-mono text-slate-400">
-                <span>Design System</span>
-                <span>85% Optimized</span>
-              </div>
+            <div>
+              <div className="text-xs text-slate-500 font-mono">ENVIRONMENT</div>
+              <div className="text-sm font-bold text-white tracking-wide">Product Engineer</div>
             </div>
           </div>
-
-          {/* Card 2: Product Engineer Card (Flanks Right Center) */}
-          <div className="absolute top-1/4 right-4 xl:right-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-72">
-            <div className="flex items-center gap-3 mb-4 text-left">
-              <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
-                <Code2 className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xs text-slate-500 font-mono">ENVIRONMENT</div>
-                <div className="text-sm font-bold text-white tracking-wide">Product Engineer</div>
-              </div>
-            </div>
-            <div className="grid grid-cols-3 gap-2 text-[10px] font-mono text-center">
-              <div className="bg-sky-500/10 border border-sky-500/20 rounded px-1.5 py-1 text-sky-300">React</div>
-              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded px-1.5 py-1 text-cyan-300">TS</div>
-              <div className="bg-emerald-500/10 border border-emerald-500/20 rounded px-1.5 py-1 text-emerald-300">Tailwind</div>
-            </div>
-            <div className="mt-4 pt-3 border-t border-slate-900/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Production Ready
-              </span>
-              <span className="text-slate-500">v2.6.0</span>
-            </div>
+          <div className="grid grid-cols-3 gap-2 text-[10px] font-mono text-center">
+            <div className="bg-sky-500/10 border border-sky-500/20 rounded px-1.5 py-1 text-sky-300">React</div>
+            <div className="bg-cyan-500/10 border border-cyan-500/20 rounded px-1.5 py-1 text-cyan-300">TS</div>
+            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded px-1.5 py-1 text-emerald-300">Tailwind</div>
           </div>
-
-          {/* Cleaned: Bottom-left and bottom-right cards completely removed */}
-
+          <div className="mt-4 pt-3 border-t border-slate-900/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
+            <span className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Production Ready
+            </span>
+            <span className="text-slate-500">v2.6.0</span>
+          </div>
         </div>
 
       </div>
+
+      {/* Centered Content — completely independent of the cards */}
+      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
+
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-sm font-medium mb-8">
+          <Sparkles className="w-4 h-4" />
+          <span>Product Strategy • Engineering • Growth Marketing</span>
+        </div>
+
+        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
+          <span className="block">Build.</span>
+          <span className="block gradient-text">Launch.</span>
+          <span className="block">Scale.</span>
+        </h1>
+
+        <p className="text-xl md:text-2xl text-slate-300 max-w-2xl leading-relaxed mb-12 mx-auto">
+          We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
+        </p>
+
+        
+          href="#cta"
+          className="inline-flex items-center gap-2 bg-transparent border border-slate-700 hover:border-slate-500 text-white text-sm font-semibold uppercase tracking-wider px-8 py-3.5 rounded-xl transition-all"
+        >
+          <MessageSquare className="w-4 h-4 text-sky-400" />
+          Book a Discovery Call
+        </a>
+
+      </div>
+
     </section>
   );
 }
