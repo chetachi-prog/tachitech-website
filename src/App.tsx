@@ -253,103 +253,98 @@ function Navbar() {
 
 function Hero() {
   return (
-    // Enyata-Inspired Premium Saturated Dark Base
-    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center bg-[#07090e] overflow-hidden text-center font-sans antialiased select-none">
+    <section id="hero" className="relative h-screen w-full flex items-center justify-center bg-zinc-950 overflow-hidden text-center font-sans antialiased select-none">
       <AnimatedBackground />
       
-      {/* 📐 Crisp structural alignment canvas lines */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      
-      {/* High-fidelity radial glow to enrich background depth and pop text layouts */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[700px] h-[280px] sm:h-[700px] bg-gradient-to-tr from-cyan-500/10 via-sky-500/5 to-transparent rounded-full blur-[70px] sm:blur-[140px] pointer-events-none" />
+      {/* Structural layout lines matching your mockup's fine grid canvas */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-500/[0.02] rounded-full blur-[130px] pointer-events-none" />
 
-      {/* Main Layout Area - pt-6 on mobile completely eliminates the large empty header gap */}
-      <div className="container px-4 max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-between min-h-screen pt-6 sm:pt-20 lg:pt-24 pb-6 sm:pb-16 overflow-hidden">
+      {/* Main Container Layout Area */}
+      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-between h-full pt-32 pb-16">
         
-        {/* Transparent spacer kept purely for desktop layout balance */}
+        {/* Transparent layout spacer to maintain above-the-fold equilibrium */}
         <div className="hidden lg:block h-2" />
 
-        {/* Core Typography & Conversion Block */}
-        <div className="relative max-w-5xl mx-auto z-20 mt-12 sm:my-auto py-2">
+        {/* 📐 Centered Core Text Block */}
+        <div className="relative max-w-5xl mx-auto z-20 my-auto">
           
-          {/* Product Strategy Pill Tag */}
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-zinc-900/60 border border-white/[0.08] text-sky-400 text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-5 sm:mb-8 mx-auto shadow-inner backdrop-blur-md">
-            <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-sky-400" />
+          {/* Centered Product Strategy Pill Tag */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/50 border border-white/[0.06] text-sky-400 text-xs font-semibold tracking-wider uppercase mb-8 mx-auto shadow-inner backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
             <span>Product Strategy • Engineering • Growth</span>
           </div>
           
-          {/* Main Title Layout */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white mb-4 sm:mb-6">
+          {/* ✅ FIXED: Pure Horizontal Typography Track with correct sans-serif weights */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white mb-6">
             Build. <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">Launch.</span> Scale.
           </h1>
           
-          {/* Subtitle Description */}
-          <p className="text-sm sm:text-lg lg:text-xl text-zinc-400 max-w-3xl leading-relaxed mb-6 sm:mb-10 mx-auto tracking-wide font-normal px-2">
+          {/* Uniform Single-Sentence Description Text */}
+          <p className="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-3xl leading-relaxed mb-10 mx-auto tracking-wide font-normal">
             We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
           </p>
 
-          {/* Premium High-Contrast CTA Button */}
-          <div className="flex justify-center relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-sky-500 rounded-xl blur-md opacity-35 group-hover:opacity-50 transition duration-300 pointer-events-none" />
-            
+          {/* Single Isolated Pill CTA Button Button */}
+          <div className="flex justify-center">
             <a 
               href="#cta" 
-              className="relative inline-flex items-center gap-2 bg-gradient-to-r from-teal-500 via-cyan-500 to-sky-500 text-zinc-950 text-xs font-bold uppercase tracking-widest px-7 py-3.5 rounded-xl transition-all shadow-lg active:scale-[0.98]"
+              className="inline-flex items-center gap-2 bg-transparent border border-zinc-800 hover:border-zinc-700 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-xl transition-all"
             >
-              <MessageSquare className="w-4 h-4 text-zinc-950 fill-zinc-950/10" />
+              <MessageSquare className="w-4 h-4 text-sky-400" />
               Book a Discovery Call
-              <ArrowRight className="w-3.5 h-3.5 text-zinc-950 group-hover:translate-x-0.5 transition-transform duration-200" />
+              <ArrowRight className="w-3.5 h-3.5 text-zinc-600 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
         </div>
 
-        {/* 📡 Adaptive UI Floating Assets - Balanced perfectly for small and large viewports */}
-        <div className="w-full flex flex-row justify-between items-end relative z-30 pointer-events-none px-0 sm:px-4 mt-auto pt-8 gap-3 sm:gap-0">
+        {/* 📡 LOWER LEVEL ASSETS (Strictly Limited to 2 Cards Pushed Down and Out) */}
+        <div className="w-full justify-between items-end hidden lg:flex relative z-30 pointer-events-none px-4">
           
-          {/* UI/UX Workspace Card */}
-          <div className="p-3 sm:p-5 rounded-xl sm:rounded-2xl bg-zinc-900/30 border border-white/[0.05] shadow-2xl backdrop-blur-xl w-[48%] sm:w-64 text-left pointer-events-auto transition-all hover:scale-[1.02] duration-300">
-            <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-3">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 shrink-0">
-                <Palette className="w-3 h-3 sm:w-4 sm:h-4" />
+          {/* Left Corner Card: UI/UX Workspace Environment */}
+          <div className="p-5 rounded-2xl bg-zinc-900/20 border border-white/[0.04] shadow-2xl backdrop-blur-xl w-64 text-left pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+                <Palette className="w-4 h-4" />
               </div>
-              <div className="min-w-0">
-                <div className="text-[8px] sm:text-[10px] text-zinc-500 font-mono tracking-wider truncate">WORKSPACE</div>
-                <div className="text-[10px] sm:text-xs font-bold text-white tracking-wide truncate">UI/UX Design</div>
+              <div>
+                <div className="text-[10px] text-zinc-500 font-mono tracking-wider">WORKSPACE</div>
+                <div className="text-xs font-bold text-white tracking-wide">UI/UX Design</div>
               </div>
             </div>
-            <div className="space-y-1 mt-2 sm:mt-4">
+            <div className="space-y-1.5 mt-4">
               <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
                 <div className="h-full w-[85%] bg-gradient-to-r from-pink-400 to-rose-500 rounded-full" />
               </div>
-              <div className="flex justify-between text-[8px] sm:text-[10px] text-zinc-500 font-sans">
-                <span className="truncate">Design System</span>
-                <span className="text-pink-400 font-medium whitespace-nowrap">85% Opt</span>
+              <div className="flex justify-between text-[10px] text-zinc-500 font-sans">
+                <span>Design System</span>
+                <span className="text-pink-400 font-medium">85% Optimized</span>
               </div>
             </div>
           </div>
 
-          {/* Product Engineer Deployment Card */}
-          <div className="p-3 sm:p-5 rounded-xl sm:rounded-2xl bg-zinc-900/30 border border-white/[0.05] shadow-2xl backdrop-blur-xl w-[48%] sm:w-72 text-left pointer-events-auto transition-all hover:scale-[1.02] duration-300">
-            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-4">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 shrink-0">
-                <Code2 className="w-3 h-3 sm:w-4 sm:h-4" />
+          {/* Right Corner Card: Product Engineer Deployment Node */}
+          <div className="p-5 rounded-2xl bg-zinc-900/20 border border-white/[0.04] shadow-2xl backdrop-blur-xl w-72 text-left pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                <Code2 className="w-4 h-4" />
               </div>
-              <div className="min-w-0">
-                <div className="text-[8px] sm:text-[10px] text-zinc-500 font-mono tracking-wider truncate">ENVIRONMENT</div>
-                <div className="text-[10px] sm:text-xs font-bold text-white tracking-wide truncate">Product Engineer</div>
+              <div>
+                <div className="text-[10px] text-zinc-500 font-mono tracking-wider">ENVIRONMENT</div>
+                <div className="text-xs font-bold text-white tracking-wide">Product Engineer</div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-1 text-[8px] sm:text-[10px] text-center font-medium">
-              <div className="bg-sky-500/5 border border-sky-500/10 rounded px-1 py-0.5 text-sky-400 truncate">React</div>
-              <div className="bg-cyan-500/5 border border-cyan-500/10 rounded px-1 py-0.5 text-cyan-400 truncate">TS</div>
-              <div className="bg-emerald-500/5 border border-emerald-500/10 rounded px-1 py-0.5 text-emerald-400 truncate">Tailwind</div>
+            <div className="grid grid-cols-3 gap-1.5 text-[10px] text-center font-medium">
+              <div className="bg-sky-500/5 border border-sky-500/10 rounded px-1 py-0.5 text-sky-400">React</div>
+              <div className="bg-cyan-500/5 border border-cyan-500/10 rounded px-1 py-0.5 text-cyan-400">TS</div>
+              <div className="bg-emerald-500/5 border border-emerald-500/10 rounded px-1 py-0.5 text-emerald-400">Tailwind</div>
             </div>
-            <div className="mt-2 sm:mt-4 pt-1.5 sm:pt-3 border-t border-white/[0.03] flex items-center justify-between text-[9px] sm:text-[11px] text-zinc-500 font-sans">
-              <span className="flex items-center gap-1 truncate">
-                <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                Live
+            <div className="mt-4 pt-3 border-t border-white/[0.03] flex items-center justify-between text-[11px] text-zinc-500 font-sans">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Production Ready
               </span>
-              <span className="text-[8px] sm:text-[11px]">v2.6.0</span>
+              <span>v2.6.0</span>
             </div>
           </div>
 
