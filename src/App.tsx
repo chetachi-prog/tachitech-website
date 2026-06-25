@@ -272,7 +272,7 @@ function Hero() {
             We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
           </p>
 
-          {/* Single High-Impact CTA Button */}
+          {/* Centralized CTA button */}
           <div className="flex justify-center">
             <a 
               href="#cta" 
@@ -284,7 +284,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* 📐 FLOATING ENVIRONMENT CARDS (Strictly Limited to Two Assets) */}
+        {/* 📐 FLOATING ENVIRONMENT CARDS (Strictly limited to 2 items) */}
         <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none select-none">
           
           {/* Card 1: UI/UX Design Card (Flanks Left Center) */}
@@ -334,12 +334,15 @@ function Hero() {
             </div>
           </div>
 
+          {/* Cleaned: Bottom-left and bottom-right cards completely removed */}
+
         </div>
 
       </div>
     </section>
   );
 }
+
 
 
 function Trusted() {
