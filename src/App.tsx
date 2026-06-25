@@ -164,8 +164,7 @@ function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled ? 'py-4 glass-dark shadow-2xl bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900' : 'py-6 bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">
-
+<div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-3 items-center">
           {/* Logo */}
           <div className="flex-1 flex justify-start">
             <a href="#" className="flex items-center gap-3 group">
