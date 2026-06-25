@@ -31,6 +31,8 @@ import {
   ShieldCheck,
   Database,
   GitBranch,
+  ShieldAlert,
+  Zap,
 } from 'lucide-react';
 
 const NAV_LINKS = [
@@ -250,98 +252,139 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="hero" className="relative h-screen w-full flex items-center justify-center bg-zinc-950 overflow-hidden text-center font-sans antialiased select-none">
-      <AnimatedBackground />
+    // Deep dark background container matching the source palette
+    <section id="hero" className="relative min-h-screen w-full flex items-center justify-center bg-[#02050a] overflow-hidden font-sans antialiased select-none">
       
-      {/* Structural layout lines matching your mockup's fine grid canvas */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-500/[0.02] rounded-full blur-[130px] pointer-events-none" />
+      {/* 🧭 Subtle geometric layout grids */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none" />
+      
+      {/* 🌌 Multi-layered radial glowing aura */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[850px] h-[350px] sm:h-[650px] bg-cyan-500/[0.06] rounded-full blur-[100px] sm:blur-[160px] pointer-events-none z-0" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] sm:w-[500px] h-[200px] sm:h-[400px] bg-blue-600/[0.04] rounded-full blur-[80px] sm:blur-[120px] pointer-events-none z-0" />
 
-      {/* Main Container Layout Area */}
-      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-between h-full pt-32 pb-16">
+      {/* Main Structural Grid Container */}
+      <div className="container px-4 max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-between min-h-screen pt-20 lg:pt-24 pb-8">
         
-        {/* Transparent layout spacer to maintain above-the-fold equilibrium */}
-        <div className="hidden lg:block h-2" />
+        {/* Top spacer for desktop layout balance */}
+        <div className="hidden lg:block h-4" />
 
-        {/* 📐 Centered Core Text Block */}
-        <div className="relative max-w-5xl mx-auto z-20 my-auto">
+        {/* 📐 Main Center Text & CTA Area */}
+        <div className="relative max-w-4xl mx-auto z-20 my-auto text-center py-6">
           
-          {/* Centered Product Strategy Pill Tag */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/50 border border-white/[0.06] text-sky-400 text-xs font-semibold tracking-wider uppercase mb-8 mx-auto shadow-inner backdrop-blur-md">
-            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
-            <span>Product Strategy • Engineering • Growth</span>
+          {/* Symmetrical Pill Tag */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/60 border border-white/[0.05] text-cyan-400 text-[10px] sm:text-xs font-medium tracking-wider uppercase mb-6 mx-auto shadow-inner backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="opacity-90">Product Strategy • Engineering • Growth</span>
           </div>
           
-          {/* ✅ FIXED: Pure Horizontal Typography Track with correct sans-serif weights */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white mb-6">
-            Build. <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">Launch.</span> Scale.
+          {/* Main Title Typography */}
+          <h1 className="text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+            Build. <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">Launch.</span> Scale.
           </h1>
           
-          {/* Uniform Single-Sentence Description Text */}
-          <p className="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-3xl leading-relaxed mb-10 mx-auto tracking-wide font-normal">
+          {/* Clean Description Text */}
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-10 mx-auto tracking-wide font-normal px-4 opacity-90">
             We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
           </p>
 
-          {/* Single Isolated Pill CTA Button Button */}
+          {/* Minimalist CTA Button - Styled to match the dark aesthetic */}
           <div className="flex justify-center">
             <a 
               href="#cta" 
-              className="inline-flex items-center gap-2 bg-transparent border border-zinc-800 hover:border-zinc-700 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-xl transition-all"
+              className="inline-flex items-center gap-2 bg-zinc-900/40 hover:bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700 text-zinc-200 hover:text-white text-xs font-medium uppercase tracking-widest px-6 py-3.5 rounded-xl transition-all shadow-xl backdrop-blur-md"
             >
-              <MessageSquare className="w-4 h-4 text-sky-400" />
+              <MessageSquare className="w-4 h-4 text-cyan-400" />
               Book a Discovery Call
-              <ArrowRight className="w-3.5 h-3.5 text-zinc-600 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-3.5 h-3.5 text-zinc-500 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
         </div>
 
-        {/* 📡 LOWER LEVEL ASSETS (Strictly Limited to 2 Cards Pushed Down and Out) */}
-        <div className="w-full justify-between items-end hidden lg:flex relative z-30 pointer-events-none px-4">
+        {/* 📡 Grid Layout for Corner Interface Cards */}
+        {/* On mobile devices, they form a clean 2x2 cluster; on desktop layouts, they float in the four corners */}
+        <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-4 lg:absolute lg:inset-x-0 lg:bottom-12 lg:px-8 max-w-7xl mx-auto pointer-events-none z-30 mt-auto">
           
-          {/* Left Corner Card: UI/UX Workspace Environment */}
-          <div className="p-5 rounded-2xl bg-zinc-900/20 border border-white/[0.04] shadow-2xl backdrop-blur-xl w-64 text-left pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
-                <Palette className="w-4 h-4" />
+          {/* Card 1: UI/UX Workspace (Top Left Area) */}
+          <div className="p-4 rounded-xl bg-zinc-950/40 border border-white/[0.04] shadow-2xl backdrop-blur-md text-left pointer-events-auto lg:absolute lg:bottom-48 lg:left-6 lg:w-64 transition-transform hover:scale-[1.01] duration-300">
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-7 h-7 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 shrink-0">
+                <Palette className="w-3.5 h-3.5" />
               </div>
-              <div>
-                <div className="text-[10px] text-zinc-500 font-mono tracking-wider">WORKSPACE</div>
-                <div className="text-xs font-bold text-white tracking-wide">UI/UX Design</div>
+              <div className="min-w-0">
+                <div className="text-[8px] text-zinc-500 font-mono tracking-wider">WORKSPACE</div>
+                <div className="text-[11px] font-bold text-white tracking-wide truncate">UI/UX Design</div>
               </div>
             </div>
-            <div className="space-y-1.5 mt-4">
+            <div className="space-y-1 mt-3">
               <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
                 <div className="h-full w-[85%] bg-gradient-to-r from-pink-400 to-rose-500 rounded-full" />
               </div>
-              <div className="flex justify-between text-[10px] text-zinc-500 font-sans">
+              <div className="flex justify-between text-[9px] text-zinc-500 font-sans">
                 <span>Design System</span>
                 <span className="text-pink-400 font-medium">85% Optimized</span>
               </div>
             </div>
           </div>
 
-          {/* Right Corner Card: Product Engineer Deployment Node */}
-          <div className="p-5 rounded-2xl bg-zinc-900/20 border border-white/[0.04] shadow-2xl backdrop-blur-xl w-72 text-left pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-                <Code2 className="w-4 h-4" />
+          {/* Card 2: Product Engineer Environment (Top Right Area) */}
+          <div className="p-4 rounded-xl bg-zinc-950/40 border border-white/[0.04] shadow-2xl backdrop-blur-md text-left pointer-events-auto lg:absolute lg:bottom-48 lg:right-6 lg:w-64 transition-transform hover:scale-[1.01] duration-300">
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                <Code2 className="w-3.5 h-3.5" />
               </div>
-              <div>
-                <div className="text-[10px] text-zinc-500 font-mono tracking-wider">ENVIRONMENT</div>
-                <div className="text-xs font-bold text-white tracking-wide">Product Engineer</div>
+              <div className="min-w-0">
+                <div className="text-[8px] text-zinc-500 font-mono tracking-wider">ENVIRONMENT</div>
+                <div className="text-[11px] font-bold text-white tracking-wide truncate">Product Engineer</div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-1.5 text-[10px] text-center font-medium">
-              <div className="bg-sky-500/5 border border-sky-500/10 rounded px-1 py-0.5 text-sky-400">React</div>
-              <div className="bg-cyan-500/5 border border-cyan-500/10 rounded px-1 py-0.5 text-cyan-400">TS</div>
-              <div className="bg-emerald-500/5 border border-emerald-500/10 rounded px-1 py-0.5 text-emerald-400">Tailwind</div>
+            <div className="grid grid-cols-3 gap-1 text-[9px] text-center font-medium my-2.5">
+              <div className="bg-cyan-500/5 border border-cyan-500/10 rounded py-0.5 text-cyan-400">React</div>
+              <div className="bg-sky-500/5 border border-sky-500/10 rounded py-0.5 text-sky-400">TS</div>
+              <div className="bg-indigo-500/5 border border-indigo-500/10 rounded py-0.5 text-indigo-400">Tailwind</div>
             </div>
-            <div className="mt-4 pt-3 border-t border-white/[0.03] flex items-center justify-between text-[11px] text-zinc-500 font-sans">
-              <span className="flex items-center gap-1.5">
+            <div className="flex items-center justify-between text-[9px] text-zinc-500 font-sans pt-1 border-t border-white/[0.02]">
+              <span className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Production Ready
               </span>
               <span>v2.6.0</span>
+            </div>
+          </div>
+
+          {/* Card 3: Prototype Status (Bottom Left Area) */}
+          <div className="p-4 rounded-xl bg-zinc-950/40 border border-white/[0.04] shadow-2xl backdrop-blur-md text-left pointer-events-auto lg:absolute lg:bottom-4 lg:left-6 lg:w-64 transition-transform hover:scale-[1.01] duration-300">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400 shrink-0">
+                <ShieldAlert className="w-3.5 h-3.5" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-[8px] text-zinc-500 font-mono tracking-wider">PROTOTYPE</div>
+                <div className="text-[11px] font-bold text-white tracking-wide truncate">Pixel Perfect</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-1 mt-2.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400" />
+            </div>
+          </div>
+
+          {/* Card 4: Lighthouse Performance (Bottom Right Area) */}
+          <div className="p-4 rounded-xl bg-zinc-950/40 border border-white/[0.04] shadow-2xl backdrop-blur-md text-left pointer-events-auto lg:absolute lg:bottom-4 lg:right-6 lg:w-64 transition-transform hover:scale-[1.01] duration-300">
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 shrink-0">
+                <Zap className="w-3.5 h-3.5" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-[8px] text-zinc-500 font-mono tracking-wider">PERFORMANCE</div>
+                <div className="text-[11px] font-bold text-white tracking-wide truncate">99 Lighthouse</div>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5 mt-3">
+              <div className="h-3 w-7 bg-cyan-500/80 rounded-sm" />
+              <div className="h-3 w-7 bg-cyan-500/80 rounded-sm" />
+              <div className="h-3 w-7 bg-cyan-500/80 rounded-sm" />
+              <div className="h-3 w-7 bg-cyan-500/80 rounded-sm" />
             </div>
           </div>
 
