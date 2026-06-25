@@ -250,129 +250,98 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-zinc-950 overflow-hidden pt-24 pb-16 text-center select-none">
+    <section id="hero" className="relative h-screen w-full flex items-center justify-center bg-zinc-950 overflow-hidden text-center font-sans antialiased select-none">
+      <AnimatedBackground />
       
-      {/* 🔮 Premium Design-Led Background Canvas */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <AnimatedBackground />
-        {/* Fine-line technical structural layout grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        {/* Soft ambient lighting aura nodes to break the flat background */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-sky-500/[0.03] rounded-full blur-[120px]" />
-      </div>
+      {/* Structural layout lines matching your mockup's fine grid canvas */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-500/[0.02] rounded-full blur-[130px] pointer-events-none" />
 
-      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full">
+      {/* Main Container Layout Area */}
+      <div className="container-padding max-w-7xl mx-auto relative z-10 w-full flex flex-col justify-between h-full pt-32 pb-16">
         
-        {/* 📐 Main Central Core Layout */}
-        <div className="relative max-w-4xl mx-auto z-20">
+        {/* Transparent layout spacer to maintain above-the-fold equilibrium */}
+        <div className="hidden lg:block h-2" />
+
+        {/* 📐 Centered Core Text Block */}
+        <div className="relative max-w-5xl mx-auto z-20 my-auto">
           
-          {/* Elite Micro-Badge Tagline Tracking */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/40 border border-white/[0.06] text-sky-400 text-xs font-mono tracking-widest uppercase mb-8 mx-auto shadow-inner backdrop-blur-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-            <span>Product Strategy</span>
-            <span className="text-zinc-800 font-normal">•</span>
-            <span>Engineering</span>
-            <span className="text-zinc-800 font-normal">•</span>
-            <span>Growth Marketing</span>
+          {/* Centered Product Strategy Pill Tag */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900/50 border border-white/[0.06] text-sky-400 text-xs font-semibold tracking-wider uppercase mb-8 mx-auto shadow-inner backdrop-blur-md">
+            <Sparkles className="w-3.5 h-3.5 text-sky-400" />
+            <span>Product Strategy • Engineering • Growth</span>
           </div>
           
-          {/* Stark Typographic Headline Statement */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-white tracking-tight leading-[0.95] mb-8 font-sans uppercase">
-            <span className="block text-zinc-500 tracking-tighter text-3xl md:text-4xl font-mono font-medium lowercase mb-4">we engineer systems to</span>
-            Build.<br />
-            <span className="bg-gradient-to-r from-sky-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">Launch.</span><br />
-            Scale.
+          {/* ✅ FIXED: Pure Horizontal Typography Track with correct sans-serif weights */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight text-white mb-6">
+            Build. <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">Launch.</span> Scale.
           </h1>
           
-          {/* Premium Whitespace Balanced Paragraph */}
-          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed mb-14 mx-auto font-sans tracking-wide">
-            We help ambitious businesses transform ideas into successful digital products through <span className="text-white font-medium">world-class UI/UX design</span>, high-performance software development, and growth marketing frameworks.
+          {/* Uniform Single-Sentence Description Text */}
+          <p className="text-base sm:text-lg lg:text-xl text-zinc-400 max-w-3xl leading-relaxed mb-10 mx-auto tracking-wide font-normal">
+            We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
           </p>
 
-          {/* Minimalist Magnetic Style Action Call Button */}
+          {/* Single Isolated Pill CTA Button Button */}
           <div className="flex justify-center">
             <a 
               href="#cta" 
-              className="inline-flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 text-white border border-white/10 text-xs font-bold uppercase tracking-widest px-8 py-4 rounded-xl transition-all shadow-[0_4px_30px_rgba(0,0,0,0.4)] group relative overflow-hidden"
+              className="inline-flex items-center gap-2 bg-transparent border border-zinc-800 hover:border-zinc-700 text-zinc-200 hover:text-white text-xs font-bold uppercase tracking-widest px-6 py-3 rounded-xl transition-all"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <MessageSquare className="w-4 h-4 text-sky-400 group-hover:rotate-12 transition-transform" />
-              <span>Book a Discovery Call</span>
-              <ArrowRight className="w-3.5 h-3.5 text-zinc-500 group-hover:translate-x-1 transition-transform" />
+              <MessageSquare className="w-4 h-4 text-sky-400" />
+              Book a Discovery Call
+              <ArrowRight className="w-3.5 h-3.5 text-zinc-600 group-hover:translate-x-0.5 transition-transform" />
             </a>
           </div>
         </div>
 
-        {/* 📡 ELITE VISUAL ASSETS (Two Highly Detailed Floating Canvas Modules) */}
-        <div className="absolute inset-0 w-full h-full hidden xl:block pointer-events-none">
+        {/* 📡 LOWER LEVEL ASSETS (Strictly Limited to 2 Cards Pushed Down and Out) */}
+        <div className="w-full justify-between items-end hidden lg:flex relative z-30 pointer-events-none px-4">
           
-          {/* CARD 1: Highly Detailed Design Studio Module (Left Flank) */}
-          <div className="absolute top-1/4 left-8 xl:left-16 p-6 rounded-2xl bg-zinc-900/30 border border-white/[0.05] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl w-72 animate-float text-left">
-            <div className="absolute top-0 right-12 w-12 h-[1px] bg-gradient-to-r from-pink-500 to-transparent" />
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
-                  <Palette className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-[10px] text-zinc-500 font-mono tracking-widest">LAYER_01</div>
-                  <div className="text-xs font-bold text-white tracking-wide">Design Studio</div>
-                </div>
+          {/* Left Corner Card: UI/UX Workspace Environment */}
+          <div className="p-5 rounded-2xl bg-zinc-900/20 border border-white/[0.04] shadow-2xl backdrop-blur-xl w-64 text-left pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+                <Palette className="w-4 h-4" />
               </div>
-              <span className="text-[9px] font-mono text-zinc-600 border border-white/[0.05] px-1.5 py-0.5 rounded">Figma.sys</span>
+              <div>
+                <div className="text-[10px] text-zinc-500 font-mono tracking-wider">WORKSPACE</div>
+                <div className="text-xs font-bold text-white tracking-wide">UI/UX Design</div>
+              </div>
             </div>
-            
-            {/* Fine-line mockup component preview graphic lines */}
-            <div className="space-y-3 mt-5 border-t border-white/[0.03] pt-4">
-              <div className="flex justify-between items-center text-[11px] text-zinc-400">
-                <span className="font-mono">Adaptive Layout</span>
-                <span className="text-pink-400 font-mono">98% Auto</span>
-              </div>
+            <div className="space-y-1.5 mt-4">
               <div className="h-1 w-full bg-zinc-800 rounded-full overflow-hidden">
-                <div className="h-full w-[92%] bg-gradient-to-r from-pink-500 to-rose-500 rounded-full" />
+                <div className="h-full w-[85%] bg-gradient-to-r from-pink-400 to-rose-500 rounded-full" />
               </div>
-              <div className="grid grid-cols-4 gap-1 text-[8px] font-mono text-center text-zinc-500 pt-1">
-                <div className="border border-white/[0.04] py-0.5 rounded bg-zinc-950/40">UX</div>
-                <div className="border border-white/[0.04] py-0.5 rounded bg-zinc-950/40">UI</div>
-                <div className="border border-pink-500/20 py-0.5 rounded bg-pink-500/5 text-pink-400 font-bold">DS</div>
-                <div className="border border-white/[0.04] py-0.5 rounded bg-zinc-950/40">FLOW</div>
+              <div className="flex justify-between text-[10px] text-zinc-500 font-sans">
+                <span>Design System</span>
+                <span className="text-pink-400 font-medium">85% Optimized</span>
               </div>
             </div>
           </div>
 
-          {/* CARD 2: Highly Detailed Cloud Architecture Core (Right Flank) */}
-          <div className="absolute top-1/4 right-8 xl:right-16 p-6 rounded-2xl bg-zinc-900/30 border border-white/[0.05] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl w-80 animate-float animation-delay-300 text-left">
-            <div className="absolute bottom-0 left-12 w-16 h-[1px] bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
-            <div className="flex items-center justify-between mb-5">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-                  <Code2 className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-[10px] text-zinc-500 font-mono tracking-widest">ENV_PROD</div>
-                  <div className="text-xs font-bold text-white tracking-wide">Core Engine</div>
-                </div>
+          {/* Right Corner Card: Product Engineer Deployment Node */}
+          <div className="p-5 rounded-2xl bg-zinc-900/20 border border-white/[0.04] shadow-2xl backdrop-blur-xl w-72 text-left pointer-events-auto transition-transform hover:scale-[1.02] duration-300">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                <Code2 className="w-4 h-4" />
               </div>
-              <div className="flex items-center gap-1.5 text-[9px] font-mono text-emerald-400 bg-emerald-500/5 border border-emerald-500/10 px-2 py-0.5 rounded-full">
-                <span className="w-1 h-1 bg-emerald-400 rounded-full animate-ping" />
-                Live API
+              <div>
+                <div className="text-[10px] text-zinc-500 font-mono tracking-wider">ENVIRONMENT</div>
+                <div className="text-xs font-bold text-white tracking-wide">Product Engineer</div>
               </div>
             </div>
-
-            {/* High-fidelity code telemetry fields layout */}
-            <div className="space-y-2 text-[10px] font-mono text-zinc-500 bg-zinc-950/50 border border-white/[0.03] p-3 rounded-xl">
-              <div className="flex justify-between">
-                <span className="text-zinc-400">⚡ runtime:</span>
-                <span className="text-sky-400">Vite + TS</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-zinc-400">📦 bundles:</span>
-                <span className="text-teal-400">Tailwind.css</span>
-              </div>
-              <div className="flex justify-between border-t border-white/[0.03] pt-1.5 mt-1.5">
-                <span className="text-zinc-600">SYS_STATUS:</span>
-                <span className="text-zinc-400 font-bold">OPTIMIZED (0.42ms)</span>
-              </div>
+            <div className="grid grid-cols-3 gap-1.5 text-[10px] text-center font-medium">
+              <div className="bg-sky-500/5 border border-sky-500/10 rounded px-1 py-0.5 text-sky-400">React</div>
+              <div className="bg-cyan-500/5 border border-cyan-500/10 rounded px-1 py-0.5 text-cyan-400">TS</div>
+              <div className="bg-emerald-500/5 border border-emerald-500/10 rounded px-1 py-0.5 text-emerald-400">Tailwind</div>
+            </div>
+            <div className="mt-4 pt-3 border-t border-white/[0.03] flex items-center justify-between text-[11px] text-zinc-500 font-sans">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Production Ready
+              </span>
+              <span>v2.6.0</span>
             </div>
           </div>
 
@@ -382,9 +351,6 @@ function Hero() {
     </section>
   );
 }
-
-
-
 
 function Trusted() {
   return (
