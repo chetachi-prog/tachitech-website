@@ -162,49 +162,53 @@ function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'py-4 glass-dark shadow-2xl bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900' : 'py-6 bg-transparent'
+        isScrolled ? 'py-4 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-900/60 shadow-2xl' : 'py-6 bg-transparent'
       }`}>
-<div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 flex items-center justify-between">          {/* Logo */}
-          <div className="flex-1 flex justify-start">
+        {/* Full-width outer grid layout separating the three structural blocks */}
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid grid-cols-2 md:grid-cols-3 items-center w-full">
+          
+          {/* 1. Left Block: Independent Logo Element */}
+          <div className="flex justify-start">
             <a href="#" className="flex items-center gap-3 group">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-teal-500/30 group-hover:shadow-teal-500/50 transition-all duration-300">
-                <span className="text-slate-900 font-bold text-sm tracking-tight">tt</span>
+              <div className="relative w-9 h-9 flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-500 to-cyan-500 rounded-xl rotate-6 group-hover:rotate-12 transition-transform" />
+                <div className="absolute inset-[1px] bg-zinc-950 rounded-xl flex items-center justify-center font-mono font-bold text-xs tracking-wider text-white">
+                  TT
+                </div>
               </div>
-              <div className="flex items-baseline gap-1.5">
-                <span className="font-mono font-bold text-sm tracking-wider uppercase text-zinc-100 group-hover:text-white transition-colors">
-                  TACHI TECH
-                </span>
-                <span className="text-slate-400 font-medium text-xs tracking-widest uppercase">Ltd</span>
-              </div>
+              <span className="font-sans font-bold text-sm tracking-wider text-zinc-100 group-hover:text-white transition-colors">
+                TachiTech
+              </span>
             </a>
           </div>
 
-          {/* Centered Nav Pill */}
-<div className="hidden md:flex items-center justify-center bg-zinc-950/40 border border-slate-800/40 rounded-full px-6 py-2.5 backdrop-blur-md gap-8 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
-  {NAV_LINKS.map((link) => (
-    <a
-      key={link.label}
-      href={link.href}
-      className="text-[11px] font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest relative group"
-    >
-      {link.label}
-      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-teal-400 rounded-full opacity-0 scale-50 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100" />
-    </a>
-  ))}
-</div>
+          {/* 2. Center Block: Isolated, Floating Bordered Pill Container */}
+          <div className="hidden md:flex justify-center w-full">
+            <div className="inline-flex items-center bg-zinc-900/50 border border-slate-800/60 rounded-full px-6 py-2 backdrop-blur-sm gap-8 shadow-lg">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="text-[11px] font-bold text-zinc-400 hover:text-white transition-colors uppercase tracking-widest relative group"
+                >
+                  {link.label}
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-sky-400 rounded-full opacity-0 scale-50 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100" />
+                </a>
+              ))}
+            </div>
+          </div>
 
-          {/* Right CTA + Mobile Toggle */}
-          <div className="flex-1 flex justify-end items-center">
+          {/* 3. Right Block: Independent Action Button / Mobile Control Menu */}
+          <div className="flex justify-end items-center gap-4">
+            {/* Desktop Action Button */}
             <div className="hidden md:block">
-              <a
-                href="#cta"
-                className="relative inline-flex items-center gap-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-zinc-950 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full hover:shadow-[0_0_20px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
-              >
+              <button className="relative inline-flex items-center gap-2 bg-white text-zinc-950 text-xs font-bold uppercase tracking-widest px-5 py-2.5 rounded-full hover:bg-zinc-100 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer shadow-md">
                 Start Your Build
                 <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+              </button>
             </div>
 
+            {/* Mobile Responsive Hamburger Icon */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 focus:outline-none cursor-pointer"
@@ -216,7 +220,7 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Fullscreen Mobile Overlay (Unchanged) */}
       <div className={`fixed inset-0 z-40 bg-zinc-950/95 backdrop-blur-lg transform transition-transform duration-500 md:hidden flex flex-col justify-center ${
         isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
@@ -226,26 +230,25 @@ function Navbar() {
               key={link.label}
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-2xl font-semibold text-zinc-300 hover:text-white transition-colors tracking-wide flex items-center gap-2"
-              style={{ transitionDelay: `${idx * 50}ms` }}
+              className="text-xl font-semibold text-zinc-300 hover:text-white transition-colors tracking-wide"
+              style={{ transitionDelay: `${idx * 40}ms` }}
             >
               {link.label}
-              <ChevronRight className="w-5 h-5 text-teal-400" />
             </a>
           ))}
-          <a
-            href="#cta"
+          <button 
             onClick={() => setIsMobileMenuOpen(false)}
-            className="mt-8 w-full max-w-xs flex items-center justify-center gap-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-zinc-950 text-sm font-bold uppercase tracking-wider py-4 rounded-xl"
+            className="mt-8 w-full max-w-xs flex items-center justify-center gap-2 bg-white text-zinc-950 text-sm font-bold uppercase tracking-wider py-4 rounded-full"
           >
             Start Your Build
             <ArrowRight className="w-4 h-4" />
-          </a>
+          </button>
         </div>
       </div>
     </>
   );
 }
+
 
 function Hero() {
   return (
