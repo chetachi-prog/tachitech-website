@@ -254,35 +254,32 @@ function Hero() {
       <AnimatedBackground />
       
       <div className="container-padding max-w-7xl mx-auto relative z-10 w-full">
-        {/* A spacious, centered layout frame */}
+        {/* Main Central Typography Core */}
         <div className="relative max-w-4xl mx-auto z-20">
           
-          {/* Centered Brand Tagline Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-xs md:text-sm font-medium mb-8 animate-fade-in-down mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-sm font-medium mb-8 mx-auto">
             <Sparkles className="w-4 h-4" />
             <span>Product Strategy • Engineering • Growth Marketing</span>
           </div>
           
-          {/* Massive Typographic Header */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
-            <span className="block animate-fade-in-up">Build.</span>
-            <span className="block animate-fade-in-up animation-delay-100 gradient-text">Launch.</span>
-            <span className="block animate-fade-in-up animation-delay-200">Scale.</span>
+            <span className="block">Build.</span>
+            <span className="block gradient-text">Launch.</span>
+            <span className="block">Scale.</span>
           </h1>
           
-          {/* Clean Uniform Single-Sentence Description Text */}
-          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-12 mx-auto animate-fade-in-up animation-delay-300">
-            We help ambitious businesses transform ideas into successful digital products through world-class software development, product strategy, and growth marketing.
+          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-12 mx-auto">
+            We help ambitious businesses transform ideas into successful digital products through world-class UI/UX design, software development, and growth marketing.
           </p>
 
-          {/* Cleaned: ONLY ONE high-impact, centered CTA button layout */}
-          <div className="flex justify-center animate-fade-in-up animation-delay-500">
+          {/* Single High-Impact CTA Button */}
+          <div className="flex justify-center">
             <a 
               href="#cta" 
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-zinc-950 text-sm font-bold uppercase tracking-widest px-8 py-4 rounded-full hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="inline-flex items-center gap-2 bg-transparent border border-slate-700 hover:border-slate-500 text-white text-sm font-semibold uppercase tracking-wider px-8 py-3.5 rounded-xl transition-all"
             >
-              <Rocket className="w-5 h-5" />
-              Start Your Project
+              <MessageSquare className="w-4 h-4 text-sky-400" />
+              Book a Discovery Call
             </a>
           </div>
         </div>
@@ -290,8 +287,8 @@ function Hero() {
         {/* 📐 FLOATING ENVIRONMENT CARDS (Strictly Limited to Two Assets) */}
         <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none select-none">
           
-          {/* Card 1: UI/UX Design Card (Perfectly balanced far-left center) */}
-          <div className="absolute top-1/3 left-4 xl:left-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-64 animate-float">
+          {/* Card 1: UI/UX Design Card (Flanks Left Center) */}
+          <div className="absolute top-1/4 left-4 xl:left-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-64">
             <div className="flex items-center gap-3 mb-3 text-left">
               <div className="w-9 h-9 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400">
                 <Palette className="w-5 h-5" />
@@ -312,8 +309,8 @@ function Hero() {
             </div>
           </div>
 
-          {/* Card 2: Product Engineer Card (Perfectly balanced far-right center) */}
-          <div className="absolute top-1/3 right-4 xl:right-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-72 animate-float animation-delay-300">
+          {/* Card 2: Product Engineer Card (Flanks Right Center) */}
+          <div className="absolute top-1/4 right-4 xl:right-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-72">
             <div className="flex items-center gap-3 mb-4 text-left">
               <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
                 <Code2 className="w-5 h-5" />
@@ -339,12 +336,6 @@ function Hero() {
 
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
-          <a href="#services" className="text-slate-400 hover:text-white transition-colors">
-            <ChevronRight className="w-8 h-8 rotate-90" />
-          </a>
-        </div>
       </div>
     </section>
   );
