@@ -174,9 +174,8 @@ function Navbar() {
               </div>
               <div className="flex items-baseline gap-1.5">
                 <span className="font-mono font-bold text-sm tracking-wider uppercase text-zinc-100 group-hover:text-white transition-colors">
-                  TACHI TECH
+                  TACHITECH
                 </span>
-                <span className="text-slate-400 font-medium text-xs tracking-widest uppercase">Ltd</span>
               </div>
             </a>
           </div>
@@ -251,94 +250,97 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center gradient-bg overflow-hidden py-20">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center gradient-bg overflow-hidden py-20 text-center">
       <AnimatedBackground />
       
       <div className="container-padding max-w-7xl mx-auto relative z-10 w-full">
-        {/* Two-Column Layout Grid for Desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* A spacious, centered layout frame */}
+        <div className="relative max-w-4xl mx-auto z-20">
           
-          {/* Left Side Container: High-Impact Typography & Action CTA Links */}
-          <div className="lg:col-span-7 max-w-3xl text-left">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
-              <span className="block animate-fade-in-up">Build.</span>
-              <span className="block animate-fade-in-up animation-delay-100 gradient-text">Launch.</span>
-              <span className="block animate-fade-in-up animation-delay-200">Scale.</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-8 animate-fade-in-up animation-delay-300">
-              We help ambitious businesses transform ideas into successful digital products through world-class software development, product strategy, and growth marketing.
-            </p>
+          {/* Centered Brand Tagline Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-xs md:text-sm font-medium mb-8 animate-fade-in-down mx-auto">
+            <Sparkles className="w-4 h-4" />
+            <span>Product Strategy • Engineering • Growth Marketing</span>
+          </div>
+          
+          {/* Massive Typographic Header */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-tight mb-8">
+            <span className="block animate-fade-in-up">Build.</span>
+            <span className="block animate-fade-in-up animation-delay-100 gradient-text">Launch.</span>
+            <span className="block animate-fade-in-up animation-delay-200">Scale.</span>
+          </h1>
+          
+          {/* Clean Uniform Single-Sentence Description Text */}
+          <p className="text-xl md:text-2xl text-slate-300 max-w-3xl leading-relaxed mb-12 mx-auto animate-fade-in-up animation-delay-300">
+            We help ambitious businesses transform ideas into successful digital products through world-class software development, product strategy, and growth marketing.
+          </p>
 
-            {/* Repositioned Brand Pill Badge Tagline */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-sky-400 text-sm font-medium mb-10 animate-fade-in-up animation-delay-400">
-              <Sparkles className="w-4 h-4" />
-              <span>Product Strategy - Engineering - Growth Marketing</span>
+          {/* Cleaned: ONLY ONE high-impact, centered CTA button layout */}
+          <div className="flex justify-center animate-fade-in-up animation-delay-500">
+            <a 
+              href="#cta" 
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-teal-400 to-cyan-500 text-zinc-950 text-sm font-bold uppercase tracking-widest px-8 py-4 rounded-full hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Rocket className="w-5 h-5" />
+              Start Your Project
+            </a>
+          </div>
+        </div>
+
+        {/* 📐 FLOATING ENVIRONMENT CARDS (Strictly Limited to Two Assets) */}
+        <div className="absolute inset-0 w-full h-full hidden lg:block pointer-events-none select-none">
+          
+          {/* Card 1: UI/UX Design Card (Perfectly balanced far-left center) */}
+          <div className="absolute top-1/3 left-4 xl:left-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-64 animate-float">
+            <div className="flex items-center gap-3 mb-3 text-left">
+              <div className="w-9 h-9 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400">
+                <Palette className="w-5 h-5" />
+              </div>
+              <div>
+                <div className="text-xs text-slate-500 font-mono">WORKSPACE</div>
+                <div className="text-sm font-bold text-white tracking-wide">UI/UX Design</div>
+              </div>
             </div>
-
-            <div className="flex flex-wrap gap-4 animate-fade-in-up animation-delay-500">
-              <a href="#cta" className="btn-primary"><Rocket className="w-5 h-5" />Start Your Project</a>
-              <a href="#cta" className="btn-secondary"><MessageSquare className="w-5 h-5" />Book a Discovery Call</a>
+            <div className="space-y-2 mt-4 text-left">
+              <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-full w-[85%] bg-gradient-to-r from-pink-500 to-rose-500 rounded-full" />
+              </div>
+              <div className="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>Design System</span>
+                <span>85% Optimized</span>
+              </div>
             </div>
           </div>
 
-          {/* Right Side Container: Premium Interactive Floating Layout Cards */}
-          <div className="lg:col-span-5 relative h-[450px] w-full hidden md:flex items-center justify-center">
-            
-            {/* 1. Designer Core Environment Card (Floats Top-Left) */}
-            <div className="absolute top-8 left-4 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-64 animate-float select-none pointer-events-none transform transition-transform hover:scale-105 duration-300">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-xl bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400">
-                  <Palette className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-500 font-mono">WORKSPACE</div>
-                  <div className="text-sm font-bold text-white tracking-wide">UI/UX Design</div>
-                </div>
+          {/* Card 2: Product Engineer Card (Perfectly balanced far-right center) */}
+          <div className="absolute top-1/3 right-4 xl:right-12 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-72 animate-float animation-delay-300">
+            <div className="flex items-center gap-3 mb-4 text-left">
+              <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+                <Code2 className="w-5 h-5" />
               </div>
-              <div className="space-y-2 mt-4">
-                <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full w-[85%] bg-gradient-to-r from-pink-500 to-rose-500 rounded-full" />
-                </div>
-                <div className="flex justify-between text-[10px] font-mono text-slate-400">
-                  <span>Design System</span>
-                  <span>85% Optimized</span>
-                </div>
+              <div>
+                <div className="text-xs text-slate-500 font-mono">ENVIRONMENT</div>
+                <div className="text-sm font-bold text-white tracking-wide">Product Engineer</div>
               </div>
             </div>
-
-            {/* 2. Developer Deep Tech Stack Card (Floats Bottom-Right) */}
-            <div className="absolute bottom-8 right-4 p-5 rounded-2xl glass-dark border border-slate-800/60 shadow-2xl backdrop-blur-xl w-72 animate-float animation-delay-300 select-none pointer-events-none transform transition-transform hover:scale-105 duration-300">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
-                  <Code2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-500 font-mono">ENVIRONMENT</div>
-                  <div className="text-sm font-bold text-white tracking-wide">Product Engineer</div>
-                </div>
-              </div>
-              {/* Fake Interactive Tech Node Dots */}
-              <div className="grid grid-cols-3 gap-2 text-[10px] font-mono text-center">
-                <div className="bg-sky-500/10 border border-sky-500/20 rounded px-1.5 py-1 text-sky-300">React</div>
-                <div className="bg-cyan-500/10 border border-cyan-500/20 rounded px-1.5 py-1 text-cyan-300">TS</div>
-                <div className="bg-emerald-500/10 border border-emerald-500/20 rounded px-1.5 py-1 text-emerald-300">Tailwind</div>
-              </div>
-              <div className="mt-4 pt-3 border-t border-slate-900/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Production Ready
-                </span>
-                <span className="text-slate-500">v2.6.0</span>
-              </div>
+            <div className="grid grid-cols-3 gap-2 text-[10px] font-mono text-center">
+              <div className="bg-sky-500/10 border border-sky-500/20 rounded px-1.5 py-1 text-sky-300">React</div>
+              <div className="bg-cyan-500/10 border border-cyan-500/20 rounded px-1.5 py-1 text-cyan-300">TS</div>
+              <div className="bg-emerald-500/10 border border-emerald-500/20 rounded px-1.5 py-1 text-emerald-300">Tailwind</div>
             </div>
-
+            <div className="mt-4 pt-3 border-t border-slate-900/60 flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Production Ready
+              </span>
+              <span className="text-slate-500">v2.6.0</span>
+            </div>
           </div>
 
         </div>
 
-        {/* Bouncing Scroll Down Tracker Indicator Trigger */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce hidden md:block">
           <a href="#services" className="text-slate-400 hover:text-white transition-colors">
             <ChevronRight className="w-8 h-8 rotate-90" />
           </a>
@@ -347,6 +349,7 @@ function Hero() {
     </section>
   );
 }
+
 
 function Trusted() {
   return (
